@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pr Ai - Inteligência Artificial</title>
+    <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid #333;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #00ff88, #00ccff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            text-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #888;
+            margin-bottom: 30px;
+        }
+
+        .chat-container {
+            background: rgba(20, 20, 20, 0.8);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid #333;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .chat-messages {
+            height: 400px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            border: 1px solid #444;
+        }
+
+        .message {
+            margin-bottom: 20px;
+            padding: 15px 20px;
+            border-radius: 15px;
+            max-width: 80%;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        .user-message {
+            background: linear-gradient(135deg, #00ff88, #00ccff);
+            color: #000;
+            margin-left: auto;
+            text-align: right;
+        }
+
+        .ai-message {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #444;
+            margin-right: auto;
+        }
+
+        .input-container {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid #333;
+            border-radius: 25px;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .chat-input:focus {
+            border-color: #00ff88;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .send-btn {
+            padding: 15px 25px;
+            background: linear-gradient(135deg, #00ff88, #00ccff);
+            border: none;
+            border-radius: 25px;
+            color: #000;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .send-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 255, 136, 0.4);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: rgba(20, 20, 20, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #333;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: #00ff88;
+            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #00ff88, #00ccff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .feature-description {
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid #00ff88;
+            border-radius: 25px;
+            margin-bottom: 20px;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: #00ff88;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .chat-container {
+                padding: 20px;
+            }
+            
+            .input-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .chat-input, .send-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="logo">Pr Ai</h1>
+            <p class="tagline">Inteligência Artificial Avançada</p>
+            <div class="status-indicator">
+                <div class="status-dot"></div>
+                <span>Sistema Online</span>
+            </div>
+        </div>
+
+        <div class="chat-container">
+            <div class="chat-messages" id="chatMessages">
+                <div class="message ai-message">
+                    <strong>Pr Ai:</strong> Olá! Sou a Pr Ai, sua assistente de inteligência artificial. Como posso ajudá-lo hoje?
+                </div>
+            </div>
+            
+            <div class="input-container">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Digite sua pergunta aqui..." />
+                <button class="send-btn" onclick="sendMessage()">Enviar</button>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🧠</div>
+                <h3 class="feature-title">Processamento Inteligente</h3>
+                <p class="feature-description">Análise avançada de dados e processamento de linguagem natural para respostas precisas e contextuais.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3 class="feature-title">Respostas Rápidas</h3>
+                <p class="feature-description">Processamento em tempo real com algoritmos otimizados para máxima eficiência e velocidade.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3 class="feature-title">Segurança Total</h3>
+                <p class="feature-description">Proteção avançada de dados com criptografia de ponta e privacidade garantida em todas as interações.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+
+        const greetings = [
+            "Olá! Como posso ajudá-lo hoje?",
+            "Oi! É um prazer falar com você!",
+            "Olá! Estou aqui para responder suas perguntas.",
+            "Oi! Bem-vindo à Pr Ai! Em que posso ser útil?",
+            "Olá! Pronto para uma conversa interessante?",
+            "Oi! Sou a Pr Ai e estou aqui para ajudar!"
+        ];
+
+        const mathData = {
+            pi: "π (Pi) = 3.14159265358979323846... É a razão entre a circunferência e o diâmetro de qualquer círculo.",
+            e: "e (Número de Euler) = 2.71828182845904523536... Base do logaritmo natural.",
+            phi: "φ (Razão Áurea) = 1.61803398874989484820... Proporção encontrada na natureza e arte."
+        };
+
+        const aiResponses = [
+            "Interessante pergunta! Deixe-me processar isso para você...",
+            "Baseado na minha análise, posso sugerir algumas opções...",
+            "Essa é uma questão complexa. Vou quebrar em partes menores...",
+            "Excelente! Posso ajudar você com isso de várias maneiras...",
+            "Entendo sua necessidade. Aqui está minha recomendação...",
+            "Ótima pergunta! Vou usar meus algoritmos para encontrar a melhor resposta...",
+            "Processando sua solicitação... Aqui está o que encontrei...",
+            "Com base nos dados disponíveis, posso afirmar que..."
+        ];
+
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (message === '') return;
+
+            // Adicionar mensagem do usuário
+            addMessage(message, 'user');
+            chatInput.value = '';
+
+            // Simular resposta da IA após um delay
+            setTimeout(() => {
+                const response = generateResponse(message);
+                addMessage(response, 'ai');
+            }, 1000);
+        }
+
+        function generateResponse(message) {
+            const msg = message.toLowerCase();
+            
+            // Cumprimentos
+            if (msg.includes('oi') || msg.includes('olá') || msg.includes('ola') || msg.includes('hey') || msg.includes('hello')) {
+                return greetings[Math.floor(Math.random() * greetings.length)];
+            }
+            
+            // Operações matemáticas
+            if (msg.includes('+') || msg.includes('soma') || msg.includes('somar')) {
+                const numbers = msg.match(/\d+/g);
+                if (numbers && numbers.length >= 2) {
+                    const result = parseInt(numbers[0]) + parseInt(numbers[1]);
+                    return `${numbers[0]} + ${numbers[1]} = ${result}`;
+                }
+                return "Para somar, digite dois números separados por +. Exemplo: 5 + 3";
+            }
+            
+            if (msg.includes('-') || msg.includes('subtração') || msg.includes('subtrair')) {
+                const numbers = msg.match(/\d+/g);
+                if (numbers && numbers.length >= 2) {
+                    const result = parseInt(numbers[0]) - parseInt(numbers[1]);
+                    return `${numbers[0]} - ${numbers[1]} = ${result}`;
+                }
+                return "Para subtrair, digite dois números separados por -. Exemplo: 10 - 4";
+            }
+            
+            if (msg.includes('x') || msg.includes('*') || msg.includes('multiplicação') || msg.includes('multiplicar')) {
+                const numbers = msg.match(/\d+/g);
+                if (numbers && numbers.length >= 2) {
+                    const result = parseInt(numbers[0]) * parseInt(numbers[1]);
+                    return `${numbers[0]} × ${numbers[1]} = ${result}`;
+                }
+                return "Para multiplicar, digite dois números separados por x ou *. Exemplo: 6 x 7";
+            }
+            
+            if (msg.includes('/') || msg.includes('÷') || msg.includes('divisão') || msg.includes('dividir')) {
+                const numbers = msg.match(/\d+/g);
+                if (numbers && numbers.length >= 2) {
+                    if (parseInt(numbers[1]) === 0) {
+                        return "Erro: Não é possível dividir por zero!";
+                    }
+                    const result = parseInt(numbers[0]) / parseInt(numbers[1]);
+                    return `${numbers[0]} ÷ ${numbers[1]} = ${result}`;
+                }
+                return "Para dividir, digite dois números separados por /. Exemplo: 20 / 4";
+            }
+            
+            // Constantes matemáticas
+            if (msg.includes('pi') || msg.includes('π')) {
+                return mathData.pi;
+            }
+            
+            if (msg.includes('euler') || msg.includes('e =')) {
+                return mathData.e;
+            }
+            
+            if (msg.includes('razão áurea') || msg.includes('phi') || msg.includes('φ')) {
+                return mathData.phi;
+            }
+            
+            // Perguntas sobre matemática
+            if (msg.includes('matemática') || msg.includes('matematica') || msg.includes('cálculo') || msg.includes('calculo')) {
+                return "Posso ajudar com operações matemáticas! Digite operações como: 5 + 3, 10 - 2, 6 x 4, 20 / 5. Também conheço constantes como Pi, Euler e Razão Áurea.";
+            }
+            
+            // Despedidas
+            if (msg.includes('tchau') || msg.includes('bye') || msg.includes('adeus') || msg.includes('até logo')) {
+                return "Até logo! Foi um prazer conversar com você. Volte sempre que precisar!";
+            }
+            
+            // Como está
+            if (msg.includes('como vai') || msg.includes('como está') || msg.includes('tudo bem')) {
+                return "Estou funcionando perfeitamente! Meus sistemas estão todos operacionais. E você, como está?";
+            }
+            
+            // Resposta padrão
+            return aiResponses[Math.floor(Math.random() * aiResponses.length)];
+        }
+
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}-message`;
+            
+            if (sender === 'ai') {
+                messageDiv.innerHTML = `<strong>Pr Ai:</strong> ${text}`;
+            } else {
+                messageDiv.innerHTML = `<strong>Você:</strong> ${text}`;
+            }
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Permitir envio com Enter
+        chatInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Adicionar algumas mensagens de exemplo ao carregar
+        setTimeout(() => {
+            addMessage("Sistema inicializado com sucesso! Todos os módulos estão funcionando perfeitamente.", 'ai');
+        }, 1500);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'993c89ea44ae1433',t:'MTc2MTM0MTA0Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
