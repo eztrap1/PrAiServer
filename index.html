@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pr Ai - Inteligência Artificial</title>
-    <style>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pr Ai - Inteligência Artificial</title>
+  <style>
         body {
             box-sizing: border-box;
             margin: 0;
@@ -14,6 +14,139 @@
             color: #ffffff;
             min-height: 100vh;
             overflow-x: hidden;
+        }
+
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #000000 0%, #0a1929 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-logo {
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #00ff88, #00ccff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 40px;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        .loading-icons {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .loading-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            opacity: 0;
+            animation: fadeInIcon 0.5s ease forwards;
+        }
+
+        .loading-icon:nth-child(1) { animation-delay: 0.2s; }
+        .loading-icon:nth-child(2) { animation-delay: 0.4s; }
+        .loading-icon:nth-child(3) { animation-delay: 0.6s; }
+        .loading-icon:nth-child(4) { animation-delay: 0.8s; }
+
+        .icon-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(0, 255, 136, 0.1);
+            border: 2px solid #00ff88;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .icon-label {
+            color: #00ccff;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .loading-message {
+            font-size: 1.3rem;
+            color: #00ff88;
+            margin-bottom: 30px;
+            animation: fadeText 2s ease-in-out infinite;
+        }
+
+        .loading-bar-container {
+            width: 400px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .loading-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #00ff88, #00ccff);
+            border-radius: 10px;
+            animation: loadingProgress 5s ease-in-out forwards;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+        }
+
+        .loading-subtext {
+            color: #888;
+            font-size: 0.95rem;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(0, 255, 136, 0.5)); }
+            50% { filter: drop-shadow(0 0 40px rgba(0, 204, 255, 0.8)); }
+        }
+
+        @keyframes fadeInIcon {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(0, 255, 136, 0.3); }
+            50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(0, 255, 136, 0.6); }
+        }
+
+        @keyframes fadeText {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        @keyframes loadingProgress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        .main-content {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .main-content.visible {
+            opacity: 1;
         }
 
         .container {
@@ -223,53 +356,135 @@
             }
         }
     </style>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1 class="logo">Pr Ai</h1>
-            <p class="tagline">Inteligência Artificial Avançada</p>
-            <div class="status-indicator">
-                <div class="status-dot"></div>
-                <span>Sistema Online</span>
-            </div>
-        </div>
-
-        <div class="chat-container">
-            <div class="chat-messages" id="chatMessages">
-                <div class="message ai-message">
-                    <strong>Pr Ai:</strong> Olá! Sou a Pr Ai, sua assistente de inteligência artificial. Como posso ajudá-lo hoje?
-                </div>
-            </div>
-            
-            <div class="input-container">
-                <input type="text" class="chat-input" id="chatInput" placeholder="Digite sua pergunta aqui..." />
-                <button class="send-btn" onclick="sendMessage()">Enviar</button>
-            </div>
-        </div>
-
-        <div class="features">
-            <div class="feature-card">
-                <div class="feature-icon">🧠</div>
-                <h3 class="feature-title">Processamento Inteligente</h3>
-                <p class="feature-description">Análise avançada de dados e processamento de linguagem natural para respostas precisas e contextuais.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h3 class="feature-title">Respostas Rápidas</h3>
-                <p class="feature-description">Processamento em tempo real com algoritmos otimizados para máxima eficiência e velocidade.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">🔒</div>
-                <h3 class="feature-title">Segurança Total</h3>
-                <p class="feature-description">Proteção avançada de dados com criptografia de ponta e privacidade garantida em todas as interações.</p>
-            </div>
-        </div>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body><!-- Tela de Carregamento -->
+  <div class="loading-screen" id="loadingScreen">
+   <div class="loading-logo">
+    Pr Ai
+   </div>
+   <div class="loading-icons">
+    <div class="loading-icon">
+     <div class="icon-circle">
+      👤
+     </div>
+     <div class="icon-label">
+      Usuário
+     </div>
     </div>
+    <div class="loading-icon">
+     <div class="icon-circle">
+      🔒
+     </div>
+     <div class="icon-label">
+      Segurança
+     </div>
+    </div>
+    <div class="loading-icon">
+     <div class="icon-circle">
+      🛡️
+     </div>
+     <div class="icon-label">
+      Proteção
+     </div>
+    </div>
+    <div class="loading-icon">
+     <div class="icon-circle">
+      🔑
+     </div>
+     <div class="icon-label">
+      Acesso
+     </div>
+    </div>
+   </div>
+   <div class="loading-message" id="loadingMessage">
+    Autenticando...
+   </div>
+   <div class="loading-bar-container">
+    <div class="loading-bar"></div>
+   </div>
+   <div class="loading-subtext" id="loadingSubtext">
+    Estamos preparando seu ambiente...
+   </div>
+  </div><!-- Conteúdo Principal -->
+  <div class="main-content" id="mainContent">
+   <div class="container">
+    <div class="header">
+     <h1 class="logo">Pr Ai</h1>
+     <p class="tagline">Inteligência Artificial Avançada</p>
+     <div class="status-indicator">
+      <div class="status-dot"></div><span>Sistema Online</span>
+     </div>
+    </div>
+    <div class="chat-container">
+     <div class="chat-messages" id="chatMessages">
+      <div class="message ai-message"><strong>Pr Ai:</strong> Olá! Sou a Pr Ai, sua assistente de inteligência artificial. Como posso ajudá-lo hoje?
+      </div>
+     </div>
+     <div class="input-container"><input type="text" class="chat-input" id="chatInput" placeholder="Digite sua pergunta aqui..."> <button class="send-btn" onclick="sendMessage()">Enviar</button>
+     </div>
+    </div>
+    <div class="features">
+     <div class="feature-card">
+      <div class="feature-icon">
+       🧠
+      </div>
+      <h3 class="feature-title">Processamento Inteligente</h3>
+      <p class="feature-description">Análise avançada de dados e processamento de linguagem natural para respostas precisas e contextuais.</p>
+     </div>
+     <div class="feature-card">
+      <div class="feature-icon">
+       ⚡
+      </div>
+      <h3 class="feature-title">Respostas Rápidas</h3>
+      <p class="feature-description">Processamento em tempo real com algoritmos otimizados para máxima eficiência e velocidade.</p>
+     </div>
+     <div class="feature-card">
+      <div class="feature-icon">
+       🔒
+      </div>
+      <h3 class="feature-title">Segurança Total</h3>
+      <p class="feature-description">Proteção avançada de dados com criptografia de ponta e privacidade garantida em todas as interações.</p>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+        // Sistema de carregamento
+        const loadingScreen = document.getElementById('loadingScreen');
+        const mainContent = document.getElementById('mainContent');
+        const loadingMessage = document.getElementById('loadingMessage');
+        const loadingSubtext = document.getElementById('loadingSubtext');
 
-    <script>
+        const messages = [
+            { main: "Autenticando...", sub: "Estamos preparando seu ambiente..." },
+            { main: "Verificando Conexão...", sub: "Estabelecendo conexão segura..." },
+            { main: "Carregando Módulos...", sub: "Inicializando sistemas de IA..." },
+            { main: "Quase pronto...", sub: "Finalizando configurações..." }
+        ];
+
+        let messageIndex = 0;
+
+        // Trocar mensagens durante o carregamento
+        const messageInterval = setInterval(() => {
+            messageIndex++;
+            if (messageIndex < messages.length) {
+                loadingMessage.textContent = messages[messageIndex].main;
+                loadingSubtext.textContent = messages[messageIndex].sub;
+            }
+        }, 1250);
+
+        // Após 5 segundos, esconder tela de carregamento e mostrar conteúdo
+        setTimeout(() => {
+            clearInterval(messageInterval);
+            loadingScreen.classList.add('hidden');
+            mainContent.classList.add('visible');
+        }, 5000);
+    </script>
+  <script>
         const chatMessages = document.getElementById('chatMessages');
         const chatInput = document.getElementById('chatInput');
 
@@ -420,5 +635,5 @@
             addMessage("Sistema inicializado com sucesso! Todos os módulos estão funcionando perfeitamente.", 'ai');
         }, 1500);
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'993c89ea44ae1433',t:'MTc2MTM0MTA0Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99acbd81008c5448',t:'MTc2MjUxNzU2MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
