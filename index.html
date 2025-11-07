@@ -497,6 +497,129 @@
             "Oi! Sou a Pr Ai e estou aqui para ajudar!"
         ];
 
+        const jokes = [
+            "Por que o livro de matemática se suicidou? Porque tinha muitos problemas! 😄",
+            "O que o zero disse para o oito? Que cinto maneiro! 😂",
+            "Por que a galinha atravessou a rua? Para provar que não era frango! 🐔",
+            "O que é um pontinho amarelo no céu? Um Yellowcóptero! 🚁",
+            "Por que o computador foi ao médico? Porque estava com vírus! 💻",
+            "O que o pato disse para a pata? Vem Quá! 🦆",
+            "Por que o elefante não usa computador? Porque tem medo do mouse! 🐘",
+            "O que é um pontinho verde brilhando? Uma ervilha-relâmpago! ⚡",
+            "Por que o Batman colocou o bat-móvel no seguro? Porque ele tinha medo do Robin! 🦇",
+            "O que o tomate foi fazer no banco? Tirar extrato! 🍅",
+            "Por que a vaca foi para o espaço? Para se encontrar com o vácuo! 🐄",
+            "O que é um pontinho marrom voando? Uma brownboleta! 🦋",
+            "Por que o café foi à polícia? Porque foi expresso! ☕",
+            "O que o tijolo falou para o outro? Há um ciumento entre nós! 🧱",
+            "Por que o jacaré tirou o filho da escola? Porque ele réptil de ano! 🐊",
+            "O que é um pontinho azul no jardim? Uma formiga de calça jeans! 👖",
+            "Por que o livro estava com frio? Porque estava sem capa! 📚",
+            "O que a impressora disse para a outra? Essa folha é sua ou é impressão minha? 🖨️",
+            "Por que o pombo foi ao psicólogo? Porque ele tinha síndrome do pombal! 🕊️",
+            "O que é um pontinho vermelho na árvore? Um morango alpinista! 🍓",
+            "Por que o espantalho ganhou um prêmio? Porque era o melhor em sua área! 🌾",
+            "O que o oceano disse para a praia? Nada, apenas acenou! 🌊",
+            "Por que o esqueleto não brigou? Porque não tinha estômago para isso! 💀",
+            "O que é um pontinho preto no avião? Uma aeromosca! ✈️",
+            "Por que a bicicleta não consegue ficar em pé sozinha? Porque está com dois pneus! 🚲",
+            "O que o peixe disse quando bateu na parede? Dam! 🐟",
+            "Por que o celular foi preso? Por fazer ligações suspeitas! 📱",
+            "O que é um pontinho rosa no freezer? Um gelo com vergonha! 🧊",
+            "Por que o sol vai à escola? Para ficar mais brilhante! ☀️",
+            "O que o lápis disse para o papel? Você dá sentido à minha vida! ✏️",
+            "Por que o gato subiu no telhado? Para virar gato de telhado! 🐱",
+            "O que é um pontinho branco no céu? Uma nuvem de leite! ☁️",
+            "Por que a planta foi ao médico? Porque estava com raiz! 🌱",
+            "O que o número 0 disse para o número 8? Adorei seu cinto! 🔢",
+            "Por que o relógio foi ao psicólogo? Porque estava com problemas de ponteiros! ⏰",
+            "O que é um pontinho dourado na grama? Um milho fazendo yoga! 🌽",
+            "Por que a aranha é boa programadora? Porque ela sabe fazer web! 🕷️",
+            "O que o vulcão disse para o outro? Eu lava você! 🌋",
+            "Por que o fantasma foi ao bar? Para tomar uma bebida espirituosa! 👻",
+            "O que é um pontinho laranja no polo norte? Um Fanta perdido! 🥤",
+            "Por que a música foi ao médico? Porque estava com nota baixa! 🎵",
+            "O que o dente disse para o outro? Tá na hora de ir para a escova! 🦷",
+            "Por que o cachorro entrou na igreja? Porque era um pastor alemão! 🐕",
+            "O que é um pontinho verde no canto? Uma ervilha de castigo! 😅",
+            "Por que a lua foi ao salão? Para fazer as fases! 🌙",
+            "O que o sabonete disse para a mão? Você me tira do sério! 🧼",
+            "Por que o astronauta não consegue fazer reserva na lua? Porque está sempre cheia! 🚀",
+            "O que é um pontinho roxo no mar? Uma uva nadadora! 🍇",
+            "Por que o semáforo ficou vermelho? Você também ficaria se tivesse que trocar de roupa no meio da rua! 🚦",
+            "O que o chão disse para a mesa? O que você tem em cima de mim? 🪑"
+        ];
+
+        const animalEmojis = {
+            'cachorro': '🐕', 'cão': '🐕', 'dog': '🐕',
+            'gato': '🐱', 'cat': '🐱',
+            'leão': '🦁', 'lion': '🦁',
+            'tigre': '🐯', 'tiger': '🐯',
+            'urso': '🐻', 'bear': '🐻',
+            'panda': '🐼',
+            'coala': '🐨', 'koala': '🐨',
+            'macaco': '🐵', 'monkey': '🐵',
+            'gorila': '🦍', 'gorilla': '🦍',
+            'elefante': '🐘', 'elephant': '🐘',
+            'rinoceronte': '🦏', 'rhino': '🦏',
+            'hipopótamo': '🦛', 'hippo': '🦛',
+            'girafa': '🦒', 'giraffe': '🦒',
+            'zebra': '🦓',
+            'cavalo': '🐴', 'horse': '🐴',
+            'unicórnio': '🦄', 'unicorn': '🦄',
+            'vaca': '🐄', 'cow': '🐄',
+            'porco': '🐷', 'pig': '🐷',
+            'ovelha': '🐑', 'sheep': '🐑',
+            'cabra': '🐐', 'goat': '🐐',
+            'camelo': '🐪', 'camel': '🐪',
+            'lhama': '🦙', 'llama': '🦙',
+            'rato': '🐭', 'mouse': '🐭',
+            'coelho': '🐰', 'rabbit': '🐰',
+            'esquilo': '🐿️', 'squirrel': '🐿️',
+            'ouriço': '🦔', 'hedgehog': '🦔',
+            'morcego': '🦇', 'bat': '🦇',
+            'lobo': '🐺', 'wolf': '🐺',
+            'raposa': '🦊', 'fox': '🦊',
+            'guaxinim': '🦝', 'raccoon': '🦝',
+            'canguru': '🦘', 'kangaroo': '🦘',
+            'preguiça': '🦥', 'sloth': '🦥',
+            'crocodilo': '🐊', 'jacaré': '🐊', 'crocodile': '🐊',
+            'tartaruga': '🐢', 'turtle': '🐢',
+            'cobra': '🐍', 'snake': '🐍',
+            'lagarto': '🦎', 'lizard': '🦎',
+            'dinossauro': '🦕', 'dinosaur': '🦕',
+            'dragão': '🐉', 'dragon': '🐉',
+            'baleia': '🐋', 'whale': '🐋',
+            'golfinho': '🐬', 'dolphin': '🐬',
+            'tubarão': '🦈', 'shark': '🦈',
+            'polvo': '🐙', 'octopus': '🐙',
+            'lula': '🦑', 'squid': '🦑',
+            'camarão': '🦐', 'shrimp': '🦐',
+            'caranguejo': '🦀', 'crab': '🦀',
+            'peixe': '🐟', 'fish': '🐟',
+            'pássaro': '🐦', 'bird': '🐦',
+            'águia': '🦅', 'eagle': '🦅',
+            'coruja': '🦉', 'owl': '🦉',
+            'pato': '🦆', 'duck': '🦆',
+            'cisne': '🦢', 'swan': '🦢',
+            'flamingo': '🦩',
+            'pavão': '🦚', 'peacock': '🦚',
+            'papagaio': '🦜', 'parrot': '🦜',
+            'pinguim': '🐧', 'penguin': '🐧',
+            'galinha': '🐔', 'chicken': '🐔',
+            'peru': '🦃', 'turkey': '🦃',
+            'abelha': '🐝', 'bee': '🐝',
+            'borboleta': '🦋', 'butterfly': '🦋',
+            'joaninha': '🐞', 'ladybug': '🐞',
+            'formiga': '🐜', 'ant': '🐜',
+            'aranha': '🕷️', 'spider': '🕷️',
+            'escorpião': '🦂', 'scorpion': '🦂',
+            'mosquito': '🦟', 'mosquito': '🦟',
+            'mosca': '🪰', 'fly': '🪰',
+            'caracol': '🐌', 'snail': '🐌',
+            'sapo': '🐸', 'frog': '🐸'
+        };
+
         const mathData = {
             pi: "π (Pi) = 3.14159265358979323846... É a razão entre a circunferência e o diâmetro de qualquer círculo.",
             e: "e (Número de Euler) = 2.71828182845904523536... Base do logaritmo natural.",
@@ -595,6 +718,100 @@
                 return "Posso ajudar com operações matemáticas! Digite operações como: 5 + 3, 10 - 2, 6 x 4, 20 / 5. Também conheço constantes como Pi, Euler e Razão Áurea.";
             }
             
+            // Piadas
+            if (msg.includes('piada') || msg.includes('conte uma piada') || msg.includes('me faz rir') || msg.includes('engraçado')) {
+                return jokes[Math.floor(Math.random() * jokes.length)];
+            }
+            
+            // Gerador de imagens de animais
+            if (msg.includes('gere') || msg.includes('gerar') || msg.includes('crie') || msg.includes('criar') || msg.includes('mostre') || msg.includes('mostrar')) {
+                if (msg.includes('imagem') || msg.includes('foto') || msg.includes('figura')) {
+                    for (let animal in animalEmojis) {
+                        if (msg.includes(animal)) {
+                            return `<div style="display: inline-block; width: 4cm; height: 4cm; background: linear-gradient(135deg, #1a1a1a, #2a2a2a); border: 2px solid #00ff88; border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 3cm; box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);">${animalEmojis[animal]}</div>`;
+                        }
+                    }
+                    return "Posso gerar imagens de vários animais! Tente: 'gere a imagem de um cachorro', 'gere a imagem de um leão', 'gere a imagem de um crocodilo', etc.";
+                }
+            }
+            
+            // Problemas matemáticos com contexto
+            if (msg.includes('maçã') || msg.includes('maca') || msg.includes('laranja') || msg.includes('banana') || msg.includes('bola') || msg.includes('carro') || msg.includes('livro')) {
+                const numbers = msg.match(/\d+/g);
+                if (numbers && numbers.length >= 2) {
+                    if (msg.includes('como') || msg.includes('comi') || msg.includes('perdi') || msg.includes('dei') || msg.includes('vendi') || msg.includes('gastei')) {
+                        const result = parseInt(numbers[0]) - parseInt(numbers[1]);
+                        return `Se você tinha ${numbers[0]} e perdeu/usou ${numbers[1]}, então ficam ${result}! 🧮`;
+                    } else if (msg.includes('ganhei') || msg.includes('comprei') || msg.includes('recebi') || msg.includes('achei')) {
+                        const result = parseInt(numbers[0]) + parseInt(numbers[1]);
+                        return `Se você tinha ${numbers[0]} e ganhou ${numbers[1]}, então agora tem ${result}! 🎉`;
+                    }
+                }
+            }
+            
+            // Correção ortográfica
+            const corrections = {
+                'pao': 'pão',
+                'mae': 'mãe',
+                'irmao': 'irmão',
+                'nao': 'não',
+                'cao': 'cão',
+                'limao': 'limão',
+                'coraçao': 'coração',
+                'açao': 'ação',
+                'atençao': 'atenção',
+                'mais': 'mas (quando for adversativo)',
+                'mas': 'mais (quando for adição)',
+                'concerteza': 'com certeza',
+                'derrepente': 'de repente',
+                'porisso': 'por isso',
+                'apartir': 'a partir',
+                'emcima': 'em cima',
+                'embaixo': 'em baixo',
+                'afim': 'a fim (quando significa "para")',
+                'agente': 'a gente (quando significa "nós")',
+                'haja': 'aja (quando for verbo agir)',
+                'aja': 'haja (quando for verbo haver)',
+                'houve': 'ouve (quando for verbo ouvir)',
+                'ouve': 'houve (quando for verbo haver)',
+                'onde': 'aonde (quando houver movimento)',
+                'aonde': 'onde (quando for lugar fixo)',
+                'mau': 'mal (quando for advérbio)',
+                'mal': 'mau (quando for adjetivo)',
+                'seje': 'seja',
+                'esteje': 'esteja',
+                'fassa': 'faça',
+                'excessão': 'exceção',
+                'previlégio': 'privilégio',
+                'beneficiente': 'beneficente',
+                'mendingo': 'mendigo',
+                'probrema': 'problema',
+                'poblema': 'problema',
+                'asterístico': 'asterisco',
+                'rúbrica': 'rubrica',
+                'gratuíto': 'gratuito',
+                'circuíto': 'circuito',
+                'beneficiente': 'beneficente'
+            };
+            
+            if (msg.includes('ta certo') || msg.includes('está certo') || msg.includes('correto') || msg.includes('escreve') || msg.includes('ortografia') || msg.includes('correção')) {
+                for (let wrong in corrections) {
+                    if (msg.includes(wrong)) {
+                        return `❌ "${wrong}" está incorreto! A forma correta é: ✅ "${corrections[wrong]}"`;
+                    }
+                }
+                return "A palavra parece estar correta! ✅ Se tiver dúvidas sobre outras palavras, é só perguntar!";
+            }
+            
+            // Perguntas de português gerais
+            if (msg.includes('como se escreve') || msg.includes('qual a forma correta')) {
+                for (let wrong in corrections) {
+                    if (msg.includes(wrong)) {
+                        return `A forma correta é: ✅ "${corrections[wrong]}"`;
+                    }
+                }
+            }
+            
             // Despedidas
             if (msg.includes('tchau') || msg.includes('bye') || msg.includes('adeus') || msg.includes('até logo')) {
                 return "Até logo! Foi um prazer conversar com você. Volte sempre que precisar!";
@@ -635,5 +852,5 @@
             addMessage("Sistema inicializado com sucesso! Todos os módulos estão funcionando perfeitamente.", 'ai');
         }, 1500);
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99acbd81008c5448',t:'MTc2MjUxNzU2MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99ad1d8141845448',t:'MTc2MjUyMTQ5Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
